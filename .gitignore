@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dist-ia32/
+*.log
+*.tmp
+.DS_Store
+temp_subs/
+temp_remux/
+build_full.log
+build_verbose.log
+build-error.log
+build-debug.txt
+launch-err.txt
+launch-log.txt

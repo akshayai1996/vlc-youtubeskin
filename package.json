@@ -1,0 +1,78 @@
+{
+  "name": "simple-yt-style-player",
+  "version": "1.0.0",
+  "description": "YouTube-style skin for Video Player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win --x64 --ia32"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^26.8.1"
+  },
+  "author": "Antigravity",
+  "build": {
+    "appId": "com.simple.yt.style.player",
+    "productName": "Simple YT Style Player",
+    "directories": {
+      "output": "dist"
+    },
+    "executableName": "simple-yt-player",
+    "publish": null,
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "artifactName": "${productName} Setup ${version} ${arch}.${ext}",
+      "extraResources": [
+        "build/dpi-aware.manifest"
+      ],
+      "asarUnpack": [
+        "node_modules/ffmpeg-static/ffmpeg.exe",
+        "node_modules/ffprobe-static/bin/win32/x64/ffprobe.exe",
+        "node_modules/ffprobe-static/bin/win32/ia32/ffprobe.exe"
+      ],
+      "fileAssociations": [
+        {
+          "ext": [
+            "mp4",
+            "mkv",
+            "avi",
+            "mp3",
+            "flac",
+            "wav",
+            "webm",
+            "mov"
+          ],
+          "name": "Media File",
+          "role": "Viewer",
+          "icon": "build/icon.ico"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Simple YT Style Player",
+      "unicode": true,
+      "multiLanguageInstaller": false,
+      "include": "build/installer.nsh"
+    }
+  },
+  "dependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "ffprobe-static": "^3.1.0",
+    "fluent-ffmpeg": "^2.1.3"
+  }
+}
